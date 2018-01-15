@@ -23,7 +23,7 @@ backend = auto
 #### 下面两个配合使用
 #### ssh-keygen.sh
 服务器免交互生成公钥、私钥
-### fenfa_sshkey.sh
+#### fenfa_sshkey.sh
 批量分发公钥到各个服务器，并免密钥认证
 
 ## ssh_key_pass.sh
