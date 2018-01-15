@@ -20,7 +20,7 @@ backend = auto
 一键部署cobbler无人值守系统安装
 
 ## 服务器免交互密钥生成及分发
-#### 下面两个配合使用
+### 下面两个配合使用
 #### ssh-keygen.sh
 服务器免交互生成公钥、私钥
 #### fenfa_sshkey.sh
