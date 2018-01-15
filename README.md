@@ -10,23 +10,23 @@ findtime  = 300
 maxretry = 3
 backend = auto
 ```
-#### mysqlbackup.sh
+## mysqlbackup.sh
 数据库备份脚本，自动删除7天以前的备份
 
-#### backup_split.sh
+## backup_split.sh
 数据库分表分库分文件夹备份，并且按日期打包，自动删除7天以前的备份
 
-#### cobbler.sh
+## cobbler.sh
 一键部署cobbler无人值守系统安装
 
-#### 服务器免交互密钥生成及分发
+## 服务器免交互密钥生成及分发
 #### 下面两个配合使用
 #### ssh-keygen.sh
 服务器免交互生成公钥、私钥
 ### fenfa_sshkey.sh
 批量分发公钥到各个服务器，并免密钥认证
 
-#### ssh_key_pass.sh
+## ssh_key_pass.sh
 ssh密钥对免交户批量分发脚本
 useage: 
 ``` ./ssh_key_pass.sh ip ```(多个ip以空格分开)
