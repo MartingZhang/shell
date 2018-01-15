@@ -8,3 +8,8 @@ findtime  = 300
 maxretry = 3
 backend = auto
 ```
+### mysqlbackup.sh
+数据库备份脚本，自动删除7天以前的备份
+
+### backup_split.sh
+数据库分表分库分文件夹备份，并且按日期打包，自动删除7天以前的备份
