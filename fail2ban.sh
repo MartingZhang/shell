@@ -23,7 +23,7 @@ elif [ "${PM}" = "apt" ]; then
 fi
 
 yum install -y epel-release
-yum install -y fail2ban
+yum install -y fail2ban-*
 # https://github.com/fail2ban/fail2ban/archive/0.9.4.tar.gz
 
 echo "Copy configure file..."
@@ -64,6 +64,7 @@ cd ..
 
 echo "Start fail2ban..."
 /etc/init.d/fail2ban restart
+systemctl restart fail2ban
 tail /var/log/fail2ban.log
 fail2ban-client status
 fail2ban-client status ssh-iptables
