@@ -30,8 +30,7 @@ echo "Copy configure file..."
 \cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf.bak
 
 echo "make configure file..."
-\touch /etc/fail2ban/jail.d/sshd.local
-cat >/etc/fail2ban/jail.d/sshd.local<<EOF
+cat >/etc/fail2ban/jail.conf<<EOF
 [DEFAULT]
 ignoreip = 127.0.0.1/8
 bantime  = 604800
@@ -56,6 +55,7 @@ EOF
 
 echo "Start fail2ban..."
 systemctl restart fail2ban
+systemctl enable fail2ban
 tail /var/log/fail2ban.log
 fail2ban-client status
 fail2ban-client status ssh-iptables
