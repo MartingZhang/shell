@@ -54,10 +54,10 @@ if [ `/sbin/iptables -h|grep -c "\-w"` -eq 0 ]; then
 fi
 if [ "${PM}" = "yum" ]; then
     sed -i 's#logpath  = /var/log/auth.log#logpath  = /var/log/secure#g' /etc/fail2ban/jail.local
-    \wget -O //etc/init.d/fail2ban https://raw.githubusercontent.com/fail2ban/fail2ban/0.11/files/redhat-initd
+    \wget -O /etc/init.d/fail2ban https://raw.githubusercontent.com/fail2ban/fail2ban/0.11/files/redhat-initd
 elif [ "${PM}" = "apt" ]; then
     ln -sf /usr/local/bin/fail2ban-client /usr/bin/fail2ban-client
-    \cwget -O //etc/init.d/fail2ban https://raw.githubusercontent.com/fail2ban/fail2ban/0.11/files/debian-initd
+    \cwget -O /etc/init.d/fail2ban https://raw.githubusercontent.com/fail2ban/fail2ban/0.11/files/debian-initd
 fi
 chmod +x /etc/init.d/fail2ban
 cd ..
