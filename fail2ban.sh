@@ -23,12 +23,15 @@ elif [ "${PM}" = "apt" ]; then
 fi
 
 yum install -y epel-release
-yum install -y fail2ban fail2ban-systemd fail2ban-firewalld fail2ban-sendmail
+yum install -y fail2ban fail2ban-systemd fail2ban-sendmail
 # https://github.com/fail2ban/fail2ban/archive/0.9.4.tar.gz
 
 echo "Copy configure file..."
 \cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf.bak
-cat >/etc/fail2ban/jail.conf<<EOF
+
+echo "make configure file..."
+\touch /etc/fail2ban/jail.d/sshd.local
+cat >/etc/fail2ban/jail.d/sshd.local<<EOF
 [DEFAULT]
 ignoreip = 127.0.0.1/8
 bantime  = 604800
@@ -51,25 +54,7 @@ action   = iptables-multiport[name=sendmail, port="pop3,imap,smtp,pop3s,imaps,sm
 logpath  = /var/log/maillog
 EOF
 
-echo "Copy init files..."
-if [ ! -d /var/run/fail2ban ];then
-    mkdir /var/run/fail2ban
-fi
-if [ `/sbin/iptables -h|grep -c "\-w"` -eq 0 ]; then
-    sed -i 's/lockingopt =.*/lockingopt =/g' /etc/fail2ban/action.d/iptables-common.conf
-fi
-if [ "${PM}" = "yum" ]; then
-    sed -i 's#logpath  = /var/log/auth.log#logpath  = /var/log/secure#g' /etc/fail2ban/jail.local
-    \wget -O /etc/init.d/fail2ban https://raw.githubusercontent.com/fail2ban/fail2ban/0.11/files/redhat-initd
-elif [ "${PM}" = "apt" ]; then
-    ln -sf /usr/local/bin/fail2ban-client /usr/bin/fail2ban-client
-    \wget -O /etc/init.d/fail2ban https://raw.githubusercontent.com/fail2ban/fail2ban/0.11/files/debian-initd
-fi
-chmod +x /etc/init.d/fail2ban
-cd ..
-
 echo "Start fail2ban..."
-# /etc/init.d/fail2ban restart
 systemctl restart fail2ban
 tail /var/log/fail2ban.log
 fail2ban-client status
