@@ -23,7 +23,7 @@ elif [ "${PM}" = "apt" ]; then
 fi
 
 yum install -y epel-release
-yum install -y fail2ban fail2ban-firewalld fail2ban-sendmail
+yum install -y fail2ban fail2ban-systemd fail2ban-firewalld fail2ban-sendmail
 # https://github.com/fail2ban/fail2ban/archive/0.9.4.tar.gz
 
 echo "Copy configure file..."
