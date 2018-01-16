@@ -57,7 +57,7 @@ if [ "${PM}" = "yum" ]; then
     \wget -O /etc/init.d/fail2ban https://raw.githubusercontent.com/fail2ban/fail2ban/0.11/files/redhat-initd
 elif [ "${PM}" = "apt" ]; then
     ln -sf /usr/local/bin/fail2ban-client /usr/bin/fail2ban-client
-    \cwget -O /etc/init.d/fail2ban https://raw.githubusercontent.com/fail2ban/fail2ban/0.11/files/debian-initd
+    \wget -O /etc/init.d/fail2ban https://raw.githubusercontent.com/fail2ban/fail2ban/0.11/files/debian-initd
 fi
 chmod +x /etc/init.d/fail2ban
 cd ..
