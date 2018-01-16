@@ -4,12 +4,7 @@
 
 ## fail2ban.sh
 fail2ban一键脚本
-```
-bantime  = 604800
-findtime  = 300
-maxretry = 3
-backend = auto
-```
+```[sendmail]```模块中，更改dest=```you@example.com```为需要接收邮件通知的邮箱地址
 ## mysqlbackup.sh
 数据库备份脚本，自动删除7天以前的备份
 
