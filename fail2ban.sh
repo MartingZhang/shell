@@ -23,8 +23,11 @@ elif [ "${PM}" = "apt" ]; then
 fi
 
 yum install -y epel-release
-yum install -y fail2ban fail2ban-systemd fail2ban-sendmail
+yum install -y fail2ban fail2ban-sendmail
 # https://github.com/fail2ban/fail2ban/archive/0.9.4.tar.gz
+wget --no-check-certificate fail2ban-0.10.1.tar.gz https://github.com/fail2ban/fail2ban/archive/0.10.1.tar.gz -O - | tar xz
+cd fail2ban-0.10.1
+python setup.py install
 
 echo "Copy configure file..."
 \cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.conf.bak
