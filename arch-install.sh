@@ -1,18 +1,18 @@
 #[option] remote
-passwd && systemctl start sshd
+#passwd && systemctl start sshd
 
 #[option] wipefs
-wipefs -a /dev/sda
+#wipefs -a /dev/sda
 
 #[1-gpt/efi]
-parted /dev/sda -s -a optimal mklabel gpt mkpart primary 500m 100% \
-		    mkpart primary 1m 500m && mkfs.ext4 /dev/sda1 && mount /dev/sda1 /mnt && \
-		    mkdir -p /mnt/boot/EFI && mkfs.fat -F32 /dev/sda2 && \
-		    mount /dev/sda2 /mnt/boot/EFI
+#parted /dev/sda -s -a optimal mklabel gpt mkpart primary 500m 100% \
+#		    mkpart primary 1m 500m && mkfs.ext4 /dev/sda1 && mount /dev/sda1 /mnt && \
+#		    mkdir -p /mnt/boot/EFI && mkfs.fat -F32 /dev/sda2 && \
+#		    mount /dev/sda2 /mnt/boot/EFI
 
 #[1-mbr/bios]
 #parted /dev/sda -s -a optimal mklabel msdos mkpart primary 1m 100% && \
-        mkfs.ext4 /dev/sda1 && mount /dev/sda1 /mnt
+#        mkfs.ext4 /dev/sda1 && mount /dev/sda1 /mnt
 
 #[2-pacman]
 #sed -i -e '/163/! s/^Server/#Server/' /etc/pacman.d/mirrorlist && pacstrap /mnt base
