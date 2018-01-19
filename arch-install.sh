@@ -16,8 +16,8 @@ parted /dev/sda -s -a optimal mklabel gpt mkpart primary 500m 100% \
 
 #[2-pacman]
 #sed -i -e '/163/! s/^Server/#Server/' /etc/pacman.d/mirrorlist && pacstrap /mnt base
-echo "setopt no_nomatch" >> install_bbr.log
-source .zshrc
+echo "setopt no_nomatch" >> ~/.zshrc
+source ~/.zshrc
 mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 wget -O /etc/pacman.d/mirrorlist.bak https://www.archlinux.org/mirrorlist/?country=CN
 sed -i 's/#Server/Server/g' /etc/pacman.d/mirrorlist.bak
