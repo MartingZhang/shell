@@ -23,7 +23,7 @@ parted /dev/sda -s -a optimal mklabel msdos mkpart primary 1m 100% && \
 echo "setopt no_nomatch" >> ~/.zshrc
 source ~/.zshrc
 mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-curl -O /etc/pacman.d/mirrorlist.bak https://www.archlinux.org/mirrorlist/?country=CN
+wget -O /etc/pacman.d/mirrorlist.bak https://www.archlinux.org/mirrorlist/?country=CN
 sed -i 's/#Server/Server/g' /etc/pacman.d/mirrorlist.bak
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
 cat <<- EOF >> /etc/pacman.conf
