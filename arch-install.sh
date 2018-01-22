@@ -81,10 +81,10 @@ dd if=/dev/zero of=/swap bs=1M count=2048 && chmod 600 /swap && mkswap /swap && 
 #fallocate -l 2G /swap && chmod 600 /swap && mkswap /swap && swapon /swap && echo '/swap none swap defaults 0 0' >> /etc/fstab
 
 #[option] user
-useradd -m -G wheel -s /usr/bin/zsh -p 123 zxk
+useradd -m -G wheel -s /usr/bin/zsh -p password username
 
 #[option] samba
-pacman -S samba && systemctl enable smbd && pdbedit -a -u zxk
+pacman -S samba && systemctl enable smbd && pdbedit -a -u username
 
 passwd && exit
 umount -R /mnt && reboot
