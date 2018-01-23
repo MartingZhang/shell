@@ -30,6 +30,7 @@ cat <<- EOF >> /etc/pacman.conf
 [archlinuxcn]
 Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 EOF
+sed -i 's/SigLevel = .*/SigLevel = Never/g' /etc/pacman.conf
 pacman -Syy
 pacman -Sy archlinux-keyring 
 pacman-key --populate archlinux 
@@ -44,7 +45,7 @@ arch-chroot /mnt /bin/bash
 echo 'LANG=zh_CN.UTF-8' > /etc/locale.conf && echo 'KEYMAP=us' > /etc/vconsole.conf && echo 'arch' > /etc/hostname && \
 sed -i -e 's/^#\(en_US.UTF-8\|zh_CN.UTF-8\|zh_CN.GBK\)/\1/' /etc/locale.gen && locale-gen && \
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-cat <<- EOF > /etc/pacman.conf
+cat <<- EOF > /etc/hosts
 #<ip-address> <hostname.domain.org> <hostname>
 127.0.0.1 localhost.localdomain localhost arch
 ::1   localhost.localdomain localhost arch
