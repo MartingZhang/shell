@@ -16,7 +16,7 @@ wipefs -a /dev/sda
 
 #[1-mbr/bios]
 parted /dev/sda -s -a optimal mklabel msdos mkpart primary 1m 100% && \
-#        mkfs.ext4 /dev/sda1 && mount /dev/sda1 /mnt
+        mkfs.ext4 /dev/sda1 && mount /dev/sda1 /mnt
 
 #[2-pacman]
 #sed -i -e '/163/! s/^Server/#Server/' /etc/pacman.d/mirrorlist && pacstrap /mnt base
