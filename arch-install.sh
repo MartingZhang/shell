@@ -30,11 +30,11 @@ cat <<- EOF >> /etc/pacman.conf
 [archlinuxcn]
 Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 EOF
-sed -i 's/SigLevel = .*/SigLevel = Never/g' /etc/pacman.conf
+sed -i 's/^SigLevel.*$/SigLevel = Never/g' /etc/pacman.conf
 pacman -Syy
-pacman -Sy archlinux-keyring 
-pacman-key --populate archlinux 
-pacman-key --refresh-keys
+#pacman -Sy archlinux-keyring 
+#pacman-key --populate archlinux 
+#pacman-key --refresh-keys
 pacstrap /mnt base base-devel
 #[2-rsync]
 #rsync -azAXH --delete --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/lost+found"} root@10.0.0.1:/ /mnt
