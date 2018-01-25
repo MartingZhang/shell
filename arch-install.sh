@@ -26,8 +26,8 @@ mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 wget -O /etc/pacman.d/mirrorlist.bak https://www.archlinux.org/mirrorlist/?country=CN
 sed -i 's/#Server/Server/g' /etc/pacman.d/mirrorlist.bak
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
-echo -e "[archlinuxcn]\nServer = https://mirrors.ustc.edu.cn/archlinuxcn/\$arch" >> /etc/pacman.conf
 sed -i 's/^SigLevel.*$/SigLevel = Never/g' /etc/pacman.conf
+echo -e "[archlinuxcn]\nSigLevel = Optional TrustedOnly\nServer = http://repo.archlinuxcn.org/$arch >> /etc/pacman.conf
 pacman -Syy
 #pacman -Sy archlinux-keyring 
 #pacman-key --populate archlinux 
