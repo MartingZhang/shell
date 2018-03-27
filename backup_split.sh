@@ -2,7 +2,7 @@
 #define var
 set -x
 user="root"
-pass="zxa+47523166"
+pass="123456"
 path="/opt/backup"
 cmd="mysql -u$user -p$pass"
 dump="mysqldump -u$user -p$pass --events -x --master-data=2"
