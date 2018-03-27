@@ -74,10 +74,10 @@ virt_install(){
 
 brctl_config(){
     brctl addbr br0
-	brctl addif br0 eth0
-	brctl stp br0 on
-	ifconfig eth0 0
-	dhclient br0
+    brctl addif br0 eth0
+    brctl stp br0 on
+    ifconfig eth0 0
+    dhclient br0
 }
 
 start_process_systemd(){
@@ -91,7 +91,7 @@ start_process_systemd(){
 main(){
     is_root
     check_system
-	virt_install
+    virt_install
     start_process_systemd
     brctl_config
 }
