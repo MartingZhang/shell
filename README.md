@@ -25,3 +25,10 @@ fail2ban一键脚本
 ssh密钥对免交户批量分发脚本
 useage: 
 ``` ./ssh_key_pass.sh ip ```(多个ip以空格分开)
+
+## kvm_install.sh
+KVM服务自动安装脚本
+此脚本尚未完成，主要测试系统判定及安装提示功能
+
+## rsync_start.sh
+rsync服务启动、停止脚本，并可通过chkconfig进行开机自启动设置
